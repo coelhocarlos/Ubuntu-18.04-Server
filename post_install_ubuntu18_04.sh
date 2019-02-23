@@ -15,8 +15,12 @@ BOLD=`tput bold`
 RESET=`tput sgr0`
 
 #tput setab 7
-
-
+################################################################################
+#                               Change root pass                               #
+################################################################################
+sudo whoami
+sudo -i
+sudo passwd
 ################################################################################
 #                               Start Script                                   #
 ################################################################################
@@ -70,7 +74,7 @@ echo -e ""
  echo -e "${YELLOW} ADDING SCRIPTS"
   echo -e  ${WHITE}
 cd
-mkdir ~/.scripts
+sudo mkdir ~/.scripts
 cd ~/.scripts
 sudo wget https://raw.githubusercontent.com/coelhocarlos/meganz/master/megasend.sh
 sudo wget https://raw.githubusercontent.com/coelhocarlos/sqldump/master/mysqldump.sh
@@ -415,7 +419,8 @@ echo -e ""
     cd downloads/
     sudo curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
     sudo echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
-    sudo apt updatesudo apt install plexmediaserver
+    sudo apt update
+    
     sudo apt install plexmediaserver
     sudo systemctl status plexmediaserver
 echo -e "${CYAN} PLEX MEDIA SERVER  INSTALLED ${GREEN}Successfull" 
@@ -430,7 +435,7 @@ echo -e "${YELLOW} INSTALL MINECRAFT"
 sudo apt update
 sudo apt install wget screen default-jdk nmap
 
-sudo useradd -m -r -d /media/hd2000/Game-Servers/minecraft minecraft
+sudo useradd -m -r -d /media/Game-Servers/minecraft minecraft
 cd /media/hd2000/Game-Servers/
 sudo mkdir minecraft
 sudo cd minecraft 
