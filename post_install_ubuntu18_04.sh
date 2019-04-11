@@ -58,16 +58,16 @@ echo -e ""
 ################################################################################
 #                         MOUNT HD EXTERN                                      #
 ################################################################################
-echo -e "${RED} MOUNT HD EXTERN"
-echo -e  ${WHITE}
+#echo -e "${RED} MOUNT HD EXTERN"
+#echo -e  ${WHITE}
 
-mkdir /media/hd2000
+#mkdir /media/hd2000
 #mount -t ntfs-3g /dev/sdb1 /media/hd160
-mount -t ntfs-3g /dev/sdb1 /media/hd2000
-echo -e ${CYAN}"MOUNTED AS /media/hd2000 --${GREEN} Successfull"
-echo -e ""
-echo -e ""
-echo -e ""
+#mount -t ntfs-3g /dev/sdb1 /media/hd2000
+#echo -e ${CYAN}"MOUNTED AS /media/hd2000 --${GREEN} Successfull"
+#echo -e ""
+#echo -e ""
+#echo -e ""
 ################################################################################
 #                           SCRIPTS                                            #
 ################################################################################
@@ -111,7 +111,7 @@ echo -e " ${CYAN} users added${GREEN}Successfull"
     cd 
     sudo touch ~/.megarc
     echo "[Login]" >> ~/.megarc
-    echo "Username = carloscoelho_@live.com" >> ~/.megarc
+    echo "Username = carloscoelho_@msn.com" >> ~/.megarc
     echo "Password = " >> ~/.megarc
  echo -e "${CYAN} MEGATOOLS  INSTALLED ${GREEN}Successfull"   
  echo -e ""
@@ -168,17 +168,19 @@ echo -e ${WHITE}
     echo "ServerSignature Off" >> /etc/apache2/apache2.conf
     echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
     
-    sudo mkdir -p /var/www/server 
-    sudo mkdir -p /var/www/public
+    sudo mkdir -p /home/zombie/www/secure
+    sudo mkdir -p /home/zombie/www/server 
+    sudo mkdir -p /home/zombie/www/public
     
     sudo chown -R www-data:www-data
-    sudo chown -R zombie:zombie /var/www/html 
-    sudo chown -R zombie:zombie /var/www/server 
-    sudo chown -R zombie:zombie /var/www/public 
+    sudo chown -R zombie:zombie /home/zombie/www/html 
+    sudo chown -R zombie:zombie /home/zombie/www/secure 
+    sudo chown -R zombie:zombie /home/zombie/www/server 
+    sudo chown -R zombie:zombie /home/zombie/www/public 
 
-    sudo chmod -R 755 /var/www/html
-    sudo chmod -R 755 /var/www/public
-    sudo chmod -R 755 /var/www/server
+    sudo chmod -R 755 /home/zombie/www/html
+    sudo chmod -R 755 /home/zombie/www/public
+    sudo chmod -R 755 /home/zombie/www/server
     
     sudo systemctl restart apache2
     sudo mkdir /etc/apache2/ssl
@@ -218,45 +220,41 @@ echo -e  ${WHITE}
         #touch /etc/samba/smb.conf
     
         sudo echo  "[wds_share]" >> /etc/samba/smb.conf
-	sudo echo "path = /media/hd2000/wds_share" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/servers/wds_share" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
         sudo echo ""
         sudo echo "[imagens]" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
-	sudo echo "path = /media/hd2000/Imagens" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/images" >> /etc/samba/smb.conf
 	sudo echo ""
         sudo echo "[media]" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
-	sudo echo "path = /media/hd2000/Media" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/media" >> /etc/samba/smb.conf
         sudo echo ""
         sudo echo "[manutencao]" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
-	sudo echo "path = /media/hd2000/Manutencao" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/apps" >> /etc/samba/smb.conf
 	sudo echo ""
-        sudo echo "[www]" >> /etc/samba/smb.conf
+        sudo echo "[www zombie]" >> /etc/samba/smb.conf
 	sudo echo "valid users = zombie" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
-	sudo echo "path = /var/www" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/www" >> /etc/samba/smb.conf
         sudo echo ""
-        sudo echo "[programacao]" >> /etc/samba/smb.conf
+        sudo echo "[estudo]" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
 	sudo echo "valid users = zombie" >> /etc/samba/smb.conf
-	sudo echo "path = /media/hd2000/Programacao" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/estudo" >> /etc/samba/smb.conf
         sudo echo ""
-        sudo echo "[clients]" >> /etc/samba/smb.conf
-	sudo echo "path = /media/hd2000/Clientes" >> /etc/samba/smb.conf
+        sudo echo "[games]" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/games" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
 	sudo echo "valid users = zombie" >> /etc/samba/smb.conf
 	sudo echo ""
 	sudo echo "[push]" >> /etc/samba/smb.conf
-	sudo echo "path = /media/hd2000/torrent/torrent-push" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/apps/torrent-push" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
 	sudo echo ""
-	sudo echo "[Game-Server]" >> /etc/samba/smb.conf
-	sudo echo "path = /media/hd2000//media/hd2000/Game-Servers" >> /etc/samba/smb.conf
-	sudo echo "writeable = yes" >> /etc/samba/smb.conf
-	sudo echo ""
-	sudo echo "[wwww]" >> /etc/samba/smb.conf
+	sudo echo "[wwww Ubuntu]" >> /etc/samba/smb.conf
 	sudo echo "path = /var/www/" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
 	sudo echo "valid users = zombie" >> /etc/samba/smb.conf
@@ -315,13 +313,13 @@ echo -e ""
 echo -e "${YELLOW} PXE INSTALL"
 echo -e ${WHITE}
 sudo apt install -y tftpd-hpa wget
-    sudo echo 'TFTP_DIRECTORY= "/media/hd2000/wds_share"' >> /etc/default/tftpd-hpa
+    sudo echo 'TFTP_DIRECTORY= "/home/zombie/servers/wds_share"' >> /etc/default/tftpd-hpa
     sudo echo 'RUN_DAEMON="no"' >> /etc/default/tftpd-hpa
-    sudo echo 'OPTIONS="-l -s /media/hd2000/wds_share"' >> /etc/default/tftpd-hpa
+    sudo echo 'OPTIONS="-l -s /home/zombie/servers/wds_share"' >> /etc/default/tftpd-hpa
     sudo /etc/init.d/tftpd-hpa restart
     sudo apt install -y isc-dhcp-server wget
     sudo echo "option domain-name "coreserver.duckdns.org";" >> /etc/dhcp/dhcpd.conf
-    sudo echo "option domain-name-servers ns1.coreserver.duckdns.org, ns2.coreser.duckdns.org;" >> /etc/dhcp/dhcpd.conf
+    sudo echo "option domain-name-servers 1925.168.0.50, 192.168.0.100;" >> /etc/dhcp/dhcpd.conf
     sudo echo "ddns-update-style interim; authoritative; allow booting; allow bootp; " >> /etc/dhcp/dhcpd.conf
     sudo echo "subnet 192.168.0.0 netmask 255.255.255.0" >>  /etc/dhcp/dhcpd.conf
     sudo echo " {" >> /etc/dhcp/dhcpd.conf
@@ -336,8 +334,8 @@ sudo apt install -y tftpd-hpa wget
     sudo echo " }" >>  /etc/dhcp/dhcpd.conf
     #/etc/default/isc-dhcp-server
     
-    sudo echo 'INTERFACESv4="ens130"' >> /etc/default/isc-dhcp-server
-    sudo echo 'INTERFACESv6="ens130"' >> /etc/default/isc-dhcp-server
+    sudo echo 'INTERFACESv4="enp2s0"' >> /etc/default/isc-dhcp-server
+    sudo echo 'INTERFACESv6="enp2s0"' >> /etc/default/isc-dhcp-server
     sudo service isc-dhcp-server restart
     sudo /etc/init.d/tftpd-hpa restart
 echo -e "${CYAN} PXE INSTALLED ${GREEN} Successfull" 
@@ -379,18 +377,20 @@ echo -e ${WHITE}
     sudo ufw default deny incoming
     sudo ufw default allow outgoing
     sudo ufw allow 22/tcp
+    sudo ufw allow 53
+    sudo ufw allow in on enp2s0 to any port 53
     sudo ufw allow 69
-    sudo ufw allow in on ens130 to any port 69
+    sudo ufw allow in on enp2s0 to any port 69
     sudo ufw allow 80/tcp
-    sudo ufw allow in on ens130 to any port 80
+    sudo ufw allow in on enp2s0 to any port 80
     sudo ufw allow 443/tcp
-    sudo ufw allow in on ens130 to any port 443
+    sudo ufw allow in on enp2s0 to any port 443
     sudo ufw allow 2121/tcp
-    sudo ufw allow in on ens130 to any port 2121
+    sudo ufw allow in on enp2s0 to any port 2121
     sudo ufw allow 8080/tcp
-    sudo ufw allow in on ens130 to any port 8080
+    sudo ufw allow in on enp2s0 to any port 8080
     sudo ufw allow 21/tcp
-    sudo ufw allow in on ens130 to any port 21
+    sudo ufw allow in on enp2s0 to any port 21
     sudo ufw app update plexmediaserver
     sudo ufw allow plexmediaserver-all
     sudo ufw allow apache
@@ -435,20 +435,20 @@ echo -e "${YELLOW} INSTALL MINECRAFT"
 sudo apt update
 sudo apt install wget screen default-jdk nmap
 
-sudo useradd -m -r -d /media/Game-Servers/minecraft minecraft
-cd /media/hd2000/Game-Servers/
+sudo useradd -m -r -d /home/zombie/games/server/minecraft minecraft
+cd /home/zombie/games/server/minecraft/
 sudo mkdir minecraft
 sudo cd minecraft 
 sudo mkdir survival
-sudo wget -O /media/hd2000/Game-Servers/minecraft/survival/minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.12.2/minecraft_server.1.12.2.jar
-sudo bash -c "echo eula=true > /media/hd2000/Game-Servers/minecraft/survival/eula.txt"
-sudo chown -R minecraft /media/hd2000/Game-Servers/minecraft/survival/
+sudo wget -O /home/zombie/games/server/minecraft/survival/minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.12.2/minecraft_server.1.12.2.jar
+sudo bash -c "echo eula=true > /home/zombie/games/server/minecraft/survival/eula.txt"
+sudo chown -R minecraft /home/zombie/games/server/minecraft/survival/
 echo "[Unit]" >> /etc/systemd/system/minecraft@.service
 echo "Description=Minecraft Server: %i" >> /etc/systemd/system/minecraft@.service
 echo "After=network.target" >> /etc/systemd/system/minecraft@.service
 
 echo "[Service]" >> /etc/systemd/system/minecraft@.service
-echo "WorkingDirectory= /media/hd2000/Game-Servers/minecraft/%i" >> /etc/systemd/system/minecraft@.service
+echo "WorkingDirectory= /home/zombie/games/server/minecraft/%i" >> /etc/systemd/system/minecraft@.service
 
 echo "User=minecraft" >> /etc/systemd/system/minecraft@.service
 echo "Group=minecraft" >> /etc/systemd/system/minecraft@.service
@@ -490,42 +490,42 @@ echo -e {$WRITE}
 echo -e "{$YELLOW}Add server Porperties"
 ############################### setings minecraft ##########################################
 echo -e {$WRITE}
-echo "max-tick-time=60000" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "generator-settings=" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "allow-nether=true" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "force-gamemode=false" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "gamemode=0" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "enable-query=false" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "player-idle-timeout=0" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "difficulty=1" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "spawn-monsters=true" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "op-permission-level=4" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "pvp=true" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "snooper-enabled=true" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "level-type=DEFAULT" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "hardcore=false" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "enable-command-block=false" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "max-players=200" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "network-compression-threshold=256" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "resource-pack-sha1=" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "max-world-size=29999984" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "server-port=25565" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "server-ip=" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "spawn-npcs=true" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "allow-flight=false" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "level-name=world" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "view-distance=10" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "resource-pack=" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "spawn-animals=true" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "white-list=false" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "generate-structures=true" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "online-mode=false" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "max-build-height=256" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "level-seed=" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "prevent-proxy-connections=false" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "use-native-transport=true" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "motd=A Minecraft ZOmbie The Zer0 Server" >> /hd2000/Game-Servers/minecraft/survival/server.properties
-echo "enable-rcon=false" >> /hd2000/Game-Servers/minecraft/survival/server.properties
+echo "max-tick-time=60000" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "generator-settings=" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "allow-nether=true" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "force-gamemode=false" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "gamemode=0" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "enable-query=false" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "player-idle-timeout=0" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "difficulty=1" >> //home/zombie/games/server/minecraft/survival/server.properties
+echo "spawn-monsters=true" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "op-permission-level=4" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "pvp=true" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "snooper-enabled=true" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "level-type=DEFAULT" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "hardcore=false" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "enable-command-block=false" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "max-players=200" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "network-compression-threshold=256" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "resource-pack-sha1=" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "max-world-size=29999984" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "server-port=25565" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "server-ip=" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "spawn-npcs=true" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "allow-flight=false" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "level-name=world" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "view-distance=10" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "resource-pack=" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "spawn-animals=true" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "white-list=false" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "generate-structures=true" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "online-mode=false" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "max-build-height=256" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "level-seed=" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "prevent-proxy-connections=false" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "use-native-transport=true" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "motd=A Minecraft ZOmbie The Zer0 Server" >> /home/zombie/games/server/minecraft/survival/server.properties
+echo "enable-rcon=false" >>/home/zombie/games/server/minecraft/survival/server.properties
 echo -e "{$YELLOW}Add server Porperties Suscessfull"
 echo -e {$WRITE}
 echo -e "${CYAN} MINECRAFT INSTALLED ${GREEN}Successfull" 
