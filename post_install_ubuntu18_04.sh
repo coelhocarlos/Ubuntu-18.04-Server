@@ -373,6 +373,14 @@ echo -e ""
 echo -e ""
 echo -e ""
 ################################################################################
+#                                  Iptables                                    #
+################################################################################
+sysctl net.ipv4.ip_forward=1
+DEFAULT_FORWARD_POLICY="ACCEPT"
+iptables -t nat -A PREROUTING -i enp2s0 -p tcp --dport 9966 -m conntrack --ctstate NEW -j DNAT --to 192.168.0.60:9966
+iptables -t nat -A PREROUTING -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+iptables -A POSTROUTING -t nat -j MASQUERADE
+################################################################################
 #                                  UFW                                         #
 ################################################################################
 echo -e "$YELLOW} UFW SET"
