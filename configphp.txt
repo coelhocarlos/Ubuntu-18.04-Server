@@ -1,0 +1,8 @@
+/etc/php5/apache2/php.ini=Configuration for mod_php
+/etc/php5/cgi/php.ini=Configuration for scripts run via CGI
+/etc/php5/cli/php.ini=Configuration for command-line scripts
+
+/etc/php/7.2/apache2/php.ini
+/etc/php/7.2/cli/php.ini
+/etc/php/7.2/fpm/php.ini
+/etc/php/7.2/mods-available/xdebug,ini
