@@ -10,3 +10,20 @@
 phpmyadmin
 
 $cfg['Servers'][$i]['hide_db'] = 'information_schema|performance_schema|mysql|phpmyadmin|sys';
+
+
+apache 
+
+<VirtualHost *:8081>
+DocumentRoot "/home/zombie/www/html"
+ServerAdmin webmaster@localhost
+ErrorLog /var/log/apache2/error.log
+CustomLog /var/log/apache2/access.log combined
+<Directory "/home/zombie/www/html">
+Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+        Order allow,deny
+        allow from all
+</Directory>
+</VirtualHost>
