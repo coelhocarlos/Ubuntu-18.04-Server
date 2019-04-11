@@ -139,6 +139,9 @@ echo -e ""
 echo -e "${YELLOW} PHP 7.2 INSTALL"
 echo -e  ${WHITE} 
     sudo apt install -y php7.2 libapache2-mod-php7.2 wget
+    sudo pecl channel-update pecl.php.net
+    sudo pecl install mcrypt-1.0.1
+    sudo apt install php-dev libmcrypt-dev php-pear
     sudo apt-get -y install php7.2-mysql php7.2-curl php-fpm php7.2-gd php7.2-intl php-pear php-imagick php7.2-imap php-memcache  php7.2-pspell php7.2-recode php7.2-sqlite3 php7.2-tidy php7.2-xmlrpc php7.2-xsl php7.2-mbstring php-gettext
     sudo wget http://archive.ubuntu.com/ubuntu/pool/universe/x/xdebug/php-xdebug_2.6.0-0ubuntu1_amd64.deb
     sudo dpkg -i php-xdebug_2.6.0-0ubuntu1_amd64.deb
