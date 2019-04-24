@@ -222,39 +222,35 @@ echo -e  ${WHITE}
         #sudo cp /etc/samba/smb.conf /etc/samba/smb.conf_backup
         #touch /etc/samba/smb.conf
     
-        sudo echo  "[wds_share]" >> /etc/samba/smb.conf
-	sudo echo "path = /home/zombie/servers/wds_share" >> /etc/samba/smb.conf
+        sudo echo  "[Pxe]" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/Servers/Share/tftp/" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
         sudo echo ""
-        sudo echo "[imagens]" >> /etc/samba/smb.conf
+        sudo echo "[Imagens]" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
 	sudo echo "path = /home/zombie/images" >> /etc/samba/smb.conf
 	sudo echo ""
-        sudo echo "[media]" >> /etc/samba/smb.conf
+        sudo echo "[Media]" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
-	sudo echo "path = /home/zombie/media" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/Media" >> /etc/samba/smb.conf
         sudo echo ""
-        sudo echo "[manutencao]" >> /etc/samba/smb.conf
-	sudo echo "writeable = yes" >> /etc/samba/smb.conf
-	sudo echo "path = /home/zombie/apps" >> /etc/samba/smb.conf
-	sudo echo ""
         sudo echo "[www zombie]" >> /etc/samba/smb.conf
 	sudo echo "valid users = zombie" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
 	sudo echo "path = /home/zombie/www" >> /etc/samba/smb.conf
         sudo echo ""
-        sudo echo "[estudo]" >> /etc/samba/smb.conf
+        sudo echo "[Code]" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
 	sudo echo "valid users = zombie" >> /etc/samba/smb.conf
-	sudo echo "path = /home/zombie/estudo" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/Server/Code" >> /etc/samba/smb.conf
         sudo echo ""
-        sudo echo "[games]" >> /etc/samba/smb.conf
-	sudo echo "path = /home/zombie/games" >> /etc/samba/smb.conf
+        sudo echo "[Games]" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/Server/Games" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
 	sudo echo "valid users = zombie" >> /etc/samba/smb.conf
 	sudo echo ""
-	sudo echo "[push]" >> /etc/samba/smb.conf
-	sudo echo "path = /home/zombie/apps/torrent-push" >> /etc/samba/smb.conf
+	sudo echo "[Push]" >> /etc/samba/smb.conf
+	sudo echo "path = /home/zombie/Server/Downloads/torrent/torrent-push" >> /etc/samba/smb.conf
 	sudo echo "writeable = yes" >> /etc/samba/smb.conf
 	sudo echo ""
 	sudo echo "[wwww Ubuntu]" >> /etc/samba/smb.conf
