@@ -542,7 +542,7 @@ echo "Description=Minecraft Server: %i" >> /etc/systemd/system/minecraft@.servic
 echo "After=network.target" >> /etc/systemd/system/minecraft@.service
 
 echo "[Service]" >> /etc/systemd/system/minecraft@.service
-echo "WorkingDirectory= /home/zombie/games/server/minecraft/%i" >> /etc/systemd/system/minecraft@.service
+echo "WorkingDirectory= /home/zombie/Server/Games/minecraft/%i" >> /etc/systemd/system/minecraft@.service
 
 echo "User=minecraft" >> /etc/systemd/system/minecraft@.service
 echo "Group=minecraft" >> /etc/systemd/system/minecraft@.service
