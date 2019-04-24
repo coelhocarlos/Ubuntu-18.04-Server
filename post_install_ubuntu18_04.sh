@@ -531,17 +531,12 @@ echo -e ""
 echo -e "${YELLOW} INSTALL MINECRAFT"
     echo -e  ${WHITE}
 sudo apt update
-sudo apt install wget screen default-jdk nmap
-
 sudo useradd -m -r -d /home/zombie/Server/Games/minecraft minecraft
-cd /home/zombie/Server/Games/minecraft/
-sudo mkdir minecraft
-sudo cd minecraft 
-sudo mkdir survival
-#sudo wget -O /home/zombie/games/server/minecraft/survival/minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.12.2/minecraft_server.1.12.2.jar
-sudo wget -O /home/zombie/games/server/minecraft/survival/minecraft_server.jar https://launcher.mojang.com/v1/objects/f1a0073671057f01aa843443fef34330281333ce/server.jar
+sudo mkdir /home/zombie/Server/Games/minecraft/survival
+sudo wget -O /home/zombie/Server/Games/minecraft/survival/minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.12.2/minecraft_server.1.12.2.jar
 sudo bash -c "echo eula=true > /home/zombie/Server/Games/minecraft/survival/eula.txt"
 sudo chown -R minecraft /home/zombie/Server/Games/minecraft/survival/
+
 echo "[Unit]" >> /etc/systemd/system/minecraft@.service
 echo "Description=Minecraft Server: %i" >> /etc/systemd/system/minecraft@.service
 echo "After=network.target" >> /etc/systemd/system/minecraft@.service
@@ -567,6 +562,8 @@ echo "ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "stop"\015'" >> /etc
 
 echo "[Install]"
 echo "WantedBy=multi-user.target"
+
+ #sudo systemctl start minecraft@survival
 
 echo -e {$WRITE}
 echo -e "*****************************************************"
