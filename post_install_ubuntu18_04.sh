@@ -311,13 +311,13 @@ echo -e ""
 
 echo -e "${YELLOW} PXE INSTALL"
 echo -e ${WHITE}
-sudo apt install -y tftpd-hpa wget
-    sudo echo 'TFTP_DIRECTORY= "/home/zombie/servers/wds_share"' >> /etc/default/tftpd-hpa
+    sudo apt install -y tftpd-hpa wget
+    sudo echo 'TFTP_DIRECTORY= "/home/zombie/Servers/Share/tftp"' >> /etc/default/tftpd-hpa
     sudo echo 'RUN_DAEMON="no"' >> /etc/default/tftpd-hpa
-    sudo echo 'OPTIONS="-l -s /home/zombie/servers/wds_share"' >> /etc/default/tftpd-hpa
+    sudo echo 'OPTIONS="-l -s /home/zombie/Servers/Share/tftp"' >> /etc/default/tftpd-hpa
     sudo /etc/init.d/tftpd-hpa restart
     sudo apt install -y isc-dhcp-server wget
-    sudo echo "option domain-name "coreserver.duckdns.org";" >> /etc/dhcp/dhcpd.conf
+    sudo echo "option domain-name "192.168.0.50";" >> /etc/dhcp/dhcpd.conf
     sudo echo "option domain-name-servers 1925.168.0.50, 192.168.0.100;" >> /etc/dhcp/dhcpd.conf
     sudo echo "ddns-update-style interim; authoritative; allow booting; allow bootp; " >> /etc/dhcp/dhcpd.conf
     sudo echo "subnet 192.168.0.0 netmask 255.255.255.0" >>  /etc/dhcp/dhcpd.conf
